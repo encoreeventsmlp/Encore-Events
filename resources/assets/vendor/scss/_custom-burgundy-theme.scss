@@ -1,0 +1,199 @@
+// Custom Burgundy Theme for Encore Event
+// This file overrides the default theme with proper burgundy color variations
+
+// Primary burgundy color and its variations
+$burgundy-primary: #962C50;
+$burgundy-light: #c78fa2;
+$burgundy-lighter: #d4a5b8;
+$burgundy-dark: #782340;
+$burgundy-darker: #652030;
+
+// Background variations
+$burgundy-bg-light: #f2e6ea;
+$burgundy-bg-lighter: #f7eef1;
+$burgundy-bg-subtle: #efdfe5;
+
+// Text colors
+$burgundy-text: #872848;
+$burgundy-text-light: #a14162;
+
+// Border colors
+$burgundy-border: #cb96a8;
+$burgundy-border-light: #d5c2c9;
+
+// Override the primary color in the theme
+$primary-color: $burgundy-primary;
+
+// Custom theme overrides
+.text-primary {
+  color: $burgundy-primary !important;
+}
+
+.bg-primary {
+  background-color: $burgundy-primary !important;
+}
+
+.bg-label-primary {
+  background-color: $burgundy-bg-subtle !important;
+  color: $burgundy-primary !important;
+}
+
+// Button variations
+.btn-primary {
+  background-color: $burgundy-primary;
+  border-color: $burgundy-primary;
+  
+  &:hover {
+    background-color: $burgundy-dark !important;
+    border-color: $burgundy-dark !important;
+  }
+  
+  &:focus, &:active {
+    background-color: $burgundy-darker !important;
+    border-color: $burgundy-darker !important;
+  }
+}
+
+.btn-outline-primary {
+  color: $burgundy-primary;
+  border-color: $burgundy-border;
+  
+  &:hover {
+    background-color: $burgundy-bg-lighter !important;
+    border-color: $burgundy-border !important;
+  }
+}
+
+// Alert variations
+.alert-primary {
+  background-color: $burgundy-bg-light;
+  border-color: $burgundy-bg-light;
+  color: $burgundy-text;
+}
+
+// List group variations
+.list-group-item-primary {
+  border-color: $burgundy-text-light;
+  background-color: $burgundy-bg-light;
+  color: $burgundy-text !important;
+  
+  &:hover {
+    border-color: $burgundy-text-light;
+    background-color: #e6dbde;
+    color: $burgundy-text;
+  }
+}
+
+// Table variations
+.table-primary {
+  --bs-table-bg: #ead5dc;
+  --bs-table-striped-bg: #e1cdd4;
+  --bs-table-active-bg: #dcc8d0;
+  --bs-table-hover-bg: #e3cfd6;
+  border-color: $burgundy-border-light;
+}
+
+// Pagination variations
+.pagination-outline-primary {
+  .page-item.active .page-link {
+    border-color: $burgundy-border;
+    color: $burgundy-primary;
+    background-color: $burgundy-bg-lighter;
+  }
+}
+
+// Navbar variations
+.navbar.bg-primary {
+  color: #e2c5cf;
+  
+  .navbar-brand,
+  .navbar-nav > .nav-link,
+  .navbar-nav > .nav-item > .nav-link {
+    color: #e2c5cf;
+    
+    &:hover {
+      color: #e2c5cf;
+    }
+  }
+  
+  .navbar-nav > .nav-link.disabled {
+    color: #c4889c !important;
+  }
+}
+
+// Menu variations
+.menu.bg-primary {
+  background-color: $burgundy-primary !important;
+  color: #e2c5cf;
+  
+  .menu-link {
+    color: #e2c5cf;
+    
+    &:hover {
+      color: #e2c5cf;
+    }
+  }
+  
+  .menu-item.active > .menu-link:not(.menu-toggle) {
+    background: linear-gradient(270deg, #993154 0%, #c992a4 100%);
+  }
+  
+  .menu-header {
+    color: #cf9faf;
+  }
+}
+
+// Footer variations
+.footer.bg-primary {
+  color: #e2c5cf;
+  
+  .footer-link {
+    color: #e2c5cf;
+    
+    &:hover {
+      color: #e2c5cf;
+    }
+    
+    &.disabled {
+      color: #c4889c !important;
+    }
+  }
+}
+
+// Form variations
+.form-check-input:checked {
+  background-color: $burgundy-primary;
+  border-color: $burgundy-primary;
+}
+
+.form-switch .form-check-input:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23962C50'/%3e%3c/svg%3e");
+}
+
+// Link variations
+a {
+  color: $burgundy-primary;
+  
+  &:hover {
+    color: $burgundy-text-light;
+  }
+}
+
+// Menu theme variations
+.bg-menu-theme {
+  .menu-item.active > .menu-link:not(.menu-toggle) {
+    background: linear-gradient(270deg, $burgundy-primary 0%, $burgundy-light 100%);
+  }
+  
+  .menu-sub > .menu-item.active > .menu-link:not(.menu-toggle) {
+    background: $burgundy-bg-light;
+    color: $burgundy-primary !important;
+  }
+}
+
+// Footer theme variations
+.bg-footer-theme {
+  .footer-link.disabled {
+    color: #bc7c94 !important;
+  }
+}

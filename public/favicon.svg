@@ -1,0 +1,19 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="32" height="32" fill="white"/>
+    
+    <!-- Monogram - Two interlocking E's (simplified for favicon) -->
+    <g transform="translate(16, 8)">
+        <!-- Left E (Black) -->
+        <path d="M-8,-4 L-8,4 L-6,4 L-6,1 L-3,1 L-3,0 L-6,0 L-6,-2 L-3,-2 L-3,-4 Z" fill="#000000"/>
+        
+        <!-- Right E (Dark Grey) -->
+        <path d="M8,-4 L8,4 L6,4 L6,1 L3,1 L3,0 L6,0 L6,-2 L3,-2 L3,-4 Z" fill="#666666"/>
+        
+        <!-- Center connection -->
+        <rect x="-1" y="-4" width="2" height="8" fill="#000000"/>
+    </g>
+    
+    <!-- ENCORE text (simplified) -->
+    <text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" font-weight="bold" fill="#000000">E</text>
+</svg>

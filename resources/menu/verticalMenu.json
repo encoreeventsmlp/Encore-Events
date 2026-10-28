@@ -1,0 +1,40 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons mdi mdi-home-outline",
+      "slug": "dashboard"
+    },
+    {
+      "url": "/admin/event-teams",
+      "name": "Event Teams",
+      "icon": "menu-icon tf-icons mdi mdi-account-group",
+      "slug": "event-teams"
+    },
+    {
+      "url": "/admin/categories",
+      "name": "Categories",
+      "icon": "menu-icon tf-icons mdi mdi-tag-multiple",
+      "slug": "categories"
+    },
+    {
+      "url": "/admin/decoration-items",
+      "name": "Decoration Items",
+      "icon": "menu-icon tf-icons mdi mdi-palette",
+      "slug": "decoration-items"
+    },
+    {
+      "url": "/admin/service-items",
+      "name": "Service Items",
+      "icon": "menu-icon tf-icons mdi mdi-concierge-bell",
+      "slug": "service-items"
+    },
+    {
+      "url": "/admin/food-items",
+      "name": "Food Items",
+      "icon": "menu-icon tf-icons mdi mdi-food",
+      "slug": "food-items"
+    }
+  ]
+}
