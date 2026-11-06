@@ -29,23 +29,25 @@
         }
 
         .toast {
-            background: #962C50;
-            color: white;
-            padding: 16px 20px;
-            border-radius: 8px;
+            background: #263D32;
+            color: #FFFFFF;
+            padding: 14px 18px;
+            border-radius: 12px;
             margin-bottom: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(32, 33, 31, 0.15);
             font-family: 'Inter', sans-serif;
             font-size: 14px;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transform: translateX(100%) scale(0.8);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            gap: 12px;
+            transform: translateX(100%) scale(0.9);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             min-width: 300px;
             opacity: 0;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .toast::before {
@@ -55,7 +57,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.5s;
         }
 
@@ -69,20 +71,28 @@
         }
 
         .toast.hide {
-            transform: translateX(100%) scale(0.8);
+            transform: translateX(100%) scale(0.9);
             opacity: 0;
         }
 
         .toast.success {
-            background: #28a745;
+            background: #263D32;
+            border-left: 4px solid #B9975B;
         }
 
         .toast.error {
-            background: #dc3545;
+            background: #C24141;
+            border-left: 4px solid #FFFFFF;
         }
 
         .toast.info {
-            background: #0dcaf0;
+            background: #2B6CB0;
+            border-left: 4px solid #B9975B;
+        }
+
+        .toast.warning {
+            background: #B7791F;
+            border-left: 4px solid #FFFFFF;
         }
 
         .toast-icon {

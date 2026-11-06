@@ -10,11 +10,28 @@
 
 @section('content')
 
-<header class="event-header">
-    <div class="container">
-        <div class="header-content text-center">
-            <h1 class="page-title">Event Selection</h1>
-            <p class="page-subtitle">Choose from our premium collection of decorations, food, and services to create your perfect event</p>
+<header class="event-header-banner">
+    <div class="container text-center">
+        <span class="section-kicker">Interactive Event Estimator</span>
+        <h1 class="page-title font-display mb-2">Build Your Event Experience</h1>
+        <p class="text-secondary max-w-700 mx-auto mb-3">Choose from our curated collection of stage decor, gourmet menus, and planning services for instant, transparent pricing.</p>
+
+        <!-- 3-Step Guided Workflow Indicator -->
+        <div class="workflow-stepper">
+            <div class="step-item active">
+                <span class="step-number">1</span>
+                <span>Select Items</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step-item active">
+                <span class="step-number">2</span>
+                <span>Guest Count & Seating</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <span>Receive Instant Budget</span>
+            </div>
         </div>
     </div>
 </header>
@@ -201,49 +218,51 @@
             </div>
 
             <div class="col-lg-3">
-                <div class="selected-items-sidebar">
-                    <div class="sidebar-header">
-                        <h3>Selected Items (<span id="total-selected-count">0</span>)</h3>
-                    </div>
-                    <div class="selected-items-list" id="selected-items-list">
-
-                    </div>
-                </div>
-
-                <div class="estimate-card">
-                    <div class="estimate-header">
-                        <h3>Event Details</h3>
-                    </div>
-                    <div class="estimate-content">
-                        <div class="form-group">
-                            <label for="guest-count">Enter your number of guests</label>
-                            <input type="number" id="guest-count" class="form-control" placeholder="Enter number of guests" min="1">
+                <div class="estimator-sidebar-wrap">
+                    <div class="selected-items-sidebar">
+                        <div class="sidebar-header">
+                            <h3>Selected Items (<span id="total-selected-count">0</span>)</h3>
                         </div>
-                        <div class="form-group">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="catering-boys" class="form-check-input">
-                                <label for="catering-boys" class="form-check-label">Need catering boys</label>
+                        <div class="selected-items-list" id="selected-items-list">
+
+                        </div>
+                    </div>
+
+                    <div class="estimate-card">
+                        <div class="estimate-header">
+                            <h3>Event Details & Guests</h3>
+                        </div>
+                        <div class="estimate-content">
+                            <div class="form-group mb-3">
+                                <label for="guest-count" class="form-label">Estimated Guest Count</label>
+                                <input type="number" id="guest-count" class="form-control" placeholder="e.g. 250 guests" min="1">
                             </div>
-                            <div id="selected-seating-info" class="mt-2" style="display: none;">
-                                <div class="alert alert-success d-flex align-items-center justify-content-between p-2 mb-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="small text-muted" id="selected-seating-name"></div>
-                                    </div>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" id="remove-seating-btn">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                            <div class="form-group mb-3">
+                                <div class="checkbox-group d-flex align-items-center gap-2">
+                                    <input type="checkbox" id="catering-boys" class="form-check-input mt-0">
+                                    <label for="catering-boys" class="form-check-label small fw-semibold">Need catering service staff</label>
                                 </div>
+                                <div id="selected-seating-info" class="mt-2" style="display: none;">
+                                    <div class="alert alert-success d-flex align-items-center justify-content-between p-2 mb-0">
+                                        <div class="d-flex align-items-center">
+                                            <div class="small fw-semibold" id="selected-seating-name"></div>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" id="remove-seating-btn">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selected-seating-id" name="seating_id">
                             </div>
-                            <input type="hidden" id="selected-seating-id" name="seating_id">
+                            <button type="button" class="btn btn-gold estimate-btn w-100" id="estimate-btn">
+                                <i class="fas fa-calculator me-2"></i>
+                                @if(isset($estimation))
+                                Re-calculate Budget
+                                @else
+                                Calculate My Estimate
+                                @endif
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-primary estimate-btn" id="estimate-btn">
-                            <i class="fas fa-calculator"></i>
-                            @if(isset($estimation))
-                            Re-calculate
-                            @else
-                            Let's Estimate
-                            @endif
-                        </button>
                     </div>
                 </div>
             </div>

@@ -19,8 +19,12 @@
 
     <link href="{{ asset('adminkit-css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/breadcrumbs.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="{{ asset('admin/css/admin-theme.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         .toast-container {
@@ -32,34 +36,25 @@
         }
 
         .toast {
-            background: #962C50;
-            color: white;
-            padding: 16px 20px;
-            border-radius: 8px;
+            background: #263D32;
+            color: #FFFFFF;
+            padding: 14px 18px;
+            border-radius: 10px;
             margin-bottom: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(32, 33, 31, 0.15);
             font-family: 'Inter', sans-serif;
             font-size: 14px;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transform: translateX(100%) scale(0.8);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            gap: 12px;
+            transform: translateX(100%) scale(0.9);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             min-width: 300px;
             opacity: 0;
             position: relative;
             overflow: hidden;
-        }
-
-        .toast::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .toast.show {
@@ -67,30 +62,28 @@
             opacity: 1;
         }
 
-        .toast.show::before {
-            left: 100%;
-        }
-
         .toast.hide {
-            transform: translateX(100%) scale(0.8);
+            transform: translateX(100%) scale(0.9);
             opacity: 0;
         }
 
         .toast.success {
-            background: #28a745;
+            background: #263D32;
+            border-left: 4px solid #B9975B;
         }
 
         .toast.error {
-            background: #dc3545;
+            background: #C24141;
+            border-left: 4px solid #FFFFFF;
         }
 
         .toast.info {
-            background: #0dcaf0;
+            background: #2B6CB0;
+            border-left: 4px solid #B9975B;
         }
 
         .toast-icon {
             font-size: 18px;
-            animation: bounce 0.6s ease-in-out;
         }
 
         .toast-close {
@@ -102,268 +95,10 @@
             margin-left: auto;
             opacity: 0.7;
             transition: all 0.2s ease;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .toast-close:hover {
             opacity: 1;
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .toast-message {
-            flex: 1;
-            animation: slideInText 0.5s ease-out 0.2s both;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes slideInText {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            }
-
-            50% {
-                box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3);
-            }
-
-            100% {
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            }
-        }
-
-        .toast.success {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .toast-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 0 0 8px 8px;
-            width: 100%;
-            transform-origin: left;
-        }
-
-        @keyframes progress {
-            0% {
-                transform: scaleX(1);
-            }
-
-            100% {
-                transform: scaleX(0);
-            }
-        }
-
-        .toast:hover {
-            transform: translateX(0) scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .toast:hover .toast-progress {
-            animation-play-state: paused;
-        }
-
-        .toast:nth-child(1) {
-            animation-delay: 0ms;
-        }
-
-        .toast:nth-child(2) {
-            animation-delay: 100ms;
-        }
-
-        .toast:nth-child(3) {
-            animation-delay: 200ms;
-        }
-
-        .toast:nth-child(4) {
-            animation-delay: 300ms;
-        }
-
-        .toast:nth-child(5) {
-            animation-delay: 400ms;
-        }
-    </style>
-    <style>
-
-        :root {
-            --bs-primary: #962C50;
-            --bs-primary-rgb: 150, 44, 80;
-        }
-
-        .btn-primary {
-            background-color: #962C50;
-            border-color: #962C50;
-        }
-
-        .btn-primary:hover {
-            background-color: #7a2441;
-            border-color: #7a2441;
-        }
-
-        .btn-primary:focus {
-            background-color: #7a2441;
-            border-color: #7a2441;
-            box-shadow: 0 0 0 0.2rem rgba(150, 44, 80, 0.25);
-        }
-
-        .btn-outline-primary {
-            color: #962C50;
-            border-color: #962C50;
-        }
-
-        .btn-outline-primary:hover {
-            background-color: #962C50;
-            border-color: #962C50;
-        }
-
-        .text-primary {
-            color: #962C50 !important;
-        }
-
-        .bg-primary {
-            background-color: #962C50 !important;
-        }
-
-        .border-primary {
-            border-color: #962C50 !important;
-        }
-
-        .pagination-btn.active {
-            background-color: #962C50;
-            border-color: #962C50;
-        }
-
-        .pagination-btn.active:hover {
-            background-color: #7a2441;
-            border-color: #7a2441;
-        }
-
-        .sidebar-item.active .sidebar-link {
-            background-color: #962C50;
-            color: white;
-        }
-
-        .sidebar-item.active .sidebar-link:hover {
-            background-color: #7a2441;
-        }
-
-        .navbar-brand {
-            color: #962C50;
-        }
-
-        .card-header {
-            border-bottom-color: rgba(150, 44, 80, 0.125);
-        }
-
-        .border-bottom {
-            border-bottom-color: rgba(150, 44, 80, 0.125) !important;
-        }
-
-        .alert-primary {
-            background-color: rgba(150, 44, 80, 0.1);
-            border-color: rgba(150, 44, 80, 0.2);
-            color: #962C50;
-        }
-
-        .form-control:focus {
-            border-color: #962C50;
-            box-shadow: 0 0 0 0.2rem rgba(150, 44, 80, 0.25);
-        }
-
-        .form-select:focus {
-            border-color: #962C50;
-            box-shadow: 0 0 0 0.2rem rgba(150, 44, 80, 0.25);
-        }
-
-        .dropdown-item:focus {
-            background-color: rgba(150, 44, 80, 0.1);
-        }
-
-        .dropdown-item:hover {
-            background-color: rgba(150, 44, 80, 0.1);
-        }
-
-        .badge.bg-primary {
-            background-color: #962C50 !important;
-        }
-
-        .badge {
-            color: #962C50 !important;
-        }
-
-        .avatar.bg-primary {
-            background-color: #962C50 !important;
-        }
-
-        .hot-toast {
-            font-family: 'Inter', sans-serif !important;
-        }
-
-        .hot-toast-success {
-            background-color: #962C50 !important;
-            color: white !important;
-            border: none !important;
-        }
-
-        .hot-toast-success .hot-toast-icon {
-            color: white !important;
-        }
-
-        .hot-toast-error {
-            background-color: #dc3545 !important;
-            color: white !important;
-            border: none !important;
-        }
-
-        .hot-toast-error .hot-toast-icon {
-            color: white !important;
-        }
-
-        .hot-toast-info {
-            background-color: #0dcaf0 !important;
-            color: white !important;
-            border: none !important;
-        }
-
-        .hot-toast-info .hot-toast-icon {
-            color: white !important;
         }
 
         .custom-pagination {
@@ -377,103 +112,30 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 40px;
-            height: 40px;
-            padding: 8px 12px;
-            border: 1px solid #e3e6f0;
-            border-radius: 6px;
-            background-color: #fff;
-            color: #5a5c69;
+            min-width: 38px;
+            height: 38px;
+            padding: 6px 10px;
+            border: 1px solid #E6E3DC;
+            border-radius: 8px;
+            background-color: #FFFFFF;
+            color: #20211F;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             transition: all 0.2s ease;
             cursor: pointer;
         }
 
         .pagination-btn:hover {
-            background-color: rgba(150, 44, 80, 0.1);
-            border-color: #962C50;
-            color: #962C50;
-            text-decoration: none;
+            background-color: #F2F0EB;
+            border-color: #B9975B;
+            color: #263D32;
         }
 
         .pagination-btn.active {
-            background-color: #962C50;
-            border-color: #962C50;
-            color: #fff;
-        }
-
-        .pagination-btn.active:hover {
-            background-color: #7a2441;
-            border-color: #7a2441;
-            color: #fff;
-        }
-
-        .pagination-btn.disabled {
-            background-color: #f8f9fc;
-            border-color: #e3e6f0;
-            color: #b7b9cc;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-
-        .pagination-btn.disabled:hover {
-            background-color: #f8f9fc;
-            border-color: #e3e6f0;
-            color: #b7b9cc;
-        }
-
-        .pagination-dots {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 40px;
-            height: 40px;
-            color: #5a5c69;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .fallback-icon {
-            display: none;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .pagination-btn:not(:has(svg)) .fallback-icon {
-            display: inline;
-        }
-
-        .pagination-btn i[data-feather] {
-            display: inline;
-        }
-
-        .pagination-btn:not(:has(svg)) i[data-feather] {
-            display: none;
-        }
-
-        .pagination-btn:not(:has(svg)) .fallback-icon {
-            display: inline;
-        }
-
-        @media (max-width: 768px) {
-            .custom-pagination {
-                gap: 4px;
-            }
-
-            .pagination-btn {
-                min-width: 36px;
-                height: 36px;
-                padding: 6px 8px;
-                font-size: 13px;
-            }
-
-            .pagination-dots {
-                min-width: 36px;
-                height: 36px;
-                font-size: 13px;
-            }
+            background-color: #263D32;
+            border-color: #263D32;
+            color: #FFFFFF;
         }
     </style>
 </head>

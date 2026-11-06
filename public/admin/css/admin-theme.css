@@ -1,0 +1,317 @@
+/**
+ * Encore Events - Premium Admin Theme Stylesheet
+ * Integrates with design system palette
+ */
+
+:root {
+  --admin-sidebar-bg: #1C2D25;
+  --admin-sidebar-hover: #263D32;
+  --admin-sidebar-active: #B9975B;
+  --admin-sidebar-text: #D5DDD8;
+  --admin-bg: #FAF9F6;
+  --admin-card-bg: #FFFFFF;
+  --admin-border: #E6E3DC;
+  --admin-border-light: #F0EDE6;
+  --admin-text-main: #20211F;
+  --admin-text-muted: #6F716B;
+}
+
+body {
+  background-color: var(--admin-bg) !important;
+  color: var(--admin-text-main) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Sidebar */
+.sidebar,
+#sidebar {
+  background: var(--admin-sidebar-bg) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand {
+  background: rgba(0, 0, 0, 0.15) !important;
+  padding: 1.25rem 1.5rem !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-header {
+  color: #8E9C94 !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 1.25rem 1.5rem 0.5rem !important;
+}
+
+.sidebar-item .sidebar-link {
+  color: var(--admin-sidebar-text) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  transition: all 180ms ease !important;
+  border-left: 3px solid transparent !important;
+  background: transparent !important;
+}
+
+.sidebar-item .sidebar-link i {
+  color: #9EAEA5 !important;
+  width: 20px !important;
+  text-align: center;
+  transition: color 180ms ease !important;
+}
+
+.sidebar-item .sidebar-link:hover {
+  background: var(--admin-sidebar-hover) !important;
+  color: #FFFFFF !important;
+}
+
+.sidebar-item .sidebar-link:hover i {
+  color: var(--admin-sidebar-active) !important;
+}
+
+.sidebar-item.active .sidebar-link {
+  background: rgba(185, 151, 91, 0.15) !important;
+  color: #FFFFFF !important;
+  border-left-color: var(--admin-sidebar-active) !important;
+  font-weight: 600 !important;
+}
+
+.sidebar-item.active .sidebar-link i {
+  color: var(--admin-sidebar-active) !important;
+}
+
+/* Navbar */
+.navbar-bg {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid var(--admin-border) !important;
+  box-shadow: 0 1px 3px rgba(32, 33, 31, 0.04) !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.hamburger,
+.hamburger:after,
+.hamburger:before {
+  background: var(--admin-text-main) !important;
+}
+
+/* Main Content Wrapper */
+.content {
+  padding: 2rem 1.5rem !important;
+  background-color: var(--admin-bg) !important;
+}
+
+/* Admin Cards */
+.card {
+  background: var(--admin-card-bg) !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 6px rgba(32, 33, 31, 0.04) !important;
+  transition: all 200ms ease !important;
+  margin-bottom: 1.5rem !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.card:hover {
+  border-color: #D5D1C7 !important;
+  box-shadow: 0 4px 12px rgba(32, 33, 31, 0.06) !important;
+}
+
+.card-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--admin-border-light) !important;
+  padding: 1.25rem 1.5rem !important;
+}
+
+.card-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--admin-text-main) !important;
+  margin-bottom: 0 !important;
+}
+
+.card-body {
+  padding: 1.5rem !important;
+}
+
+/* KPI Stat Cards */
+.kpi-stat-card {
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  border: 1px solid var(--admin-border) !important;
+  background: #FFFFFF !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-stat-card .stat-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  background: rgba(38, 61, 50, 0.08);
+  color: #263D32;
+}
+
+.kpi-stat-card.gold-theme .stat-icon-wrap {
+  background: rgba(185, 151, 91, 0.12);
+  color: #B9975B;
+}
+
+.kpi-stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--admin-text-main);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.kpi-stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--admin-text-muted);
+}
+
+/* Tables */
+.table {
+  color: var(--admin-text-main) !important;
+  vertical-align: middle !important;
+}
+
+.table th {
+  background: #F8F7F4 !important;
+  color: #555852 !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 0.85rem 1rem !important;
+  border-bottom: 1px solid var(--admin-border) !important;
+}
+
+.table td {
+  padding: 0.85rem 1rem !important;
+  border-bottom: 1px solid var(--admin-border-light) !important;
+  font-size: 0.875rem !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #FAF8F5 !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #263D32 !important;
+  border-color: #263D32 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(38, 61, 50, 0.2) !important;
+  font-weight: 500 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1C2D25 !important;
+  border-color: #1C2D25 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(38, 61, 50, 0.3) !important;
+}
+
+.btn-gold {
+  background-color: #B9975B !important;
+  border-color: #B9975B !important;
+  color: #FFFFFF !important;
+}
+
+.btn-gold:hover {
+  background-color: #A07F43 !important;
+  border-color: #A07F43 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-outline-primary {
+  color: #263D32 !important;
+  border-color: #263D32 !important;
+  background: transparent !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #263D32 !important;
+  color: #FFFFFF !important;
+}
+
+/* Badges */
+.badge.bg-primary {
+  background-color: rgba(38, 61, 50, 0.1) !important;
+  color: #263D32 !important;
+  border: 1px solid rgba(38, 61, 50, 0.2) !important;
+}
+
+.badge.bg-success {
+  background-color: rgba(38, 115, 77, 0.1) !important;
+  color: #26734D !important;
+  border: 1px solid rgba(38, 115, 77, 0.25) !important;
+}
+
+.badge.bg-warning {
+  background-color: rgba(183, 121, 31, 0.1) !important;
+  color: #B7791F !important;
+  border: 1px solid rgba(183, 121, 31, 0.25) !important;
+}
+
+.badge.bg-danger {
+  background-color: rgba(194, 65, 65, 0.1) !important;
+  color: #C24141 !important;
+  border: 1px solid rgba(194, 65, 65, 0.25) !important;
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+  border-color: var(--admin-border) !important;
+  border-radius: 8px !important;
+  font-size: 0.875rem !important;
+  padding: 0.6rem 0.9rem !important;
+  color: var(--admin-text-main) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #B9975B !important;
+  box-shadow: 0 0 0 3px rgba(185, 151, 91, 0.15) !important;
+}
+
+/* Breadcrumbs */
+.breadcrumb-container {
+  margin-bottom: 1.25rem !important;
+}
+
+.breadcrumb-item a {
+  color: var(--admin-text-muted) !important;
+  font-size: 0.85rem !important;
+}
+
+.breadcrumb-item a:hover {
+  color: #B9975B !important;
+}
+
+.breadcrumb-item.active {
+  color: #263D32 !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+}

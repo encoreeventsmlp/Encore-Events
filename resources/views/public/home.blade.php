@@ -1,586 +1,462 @@
 @extends('layouts.public')
 
-@section('title', 'Encore Events - Smart Event Cost Estimation')
+@section('title', 'Encore Events - Plan Extraordinary Events. Know Your Budget.')
+@section('description', 'Bring your event vision to life with thoughtful planning, flexible choices, and transparent cost estimation for weddings, receptions, and celebrations.')
 
 @section('content')
 
-<section id="home" class="hero-section">
-    <div class="container">
-        <div class="row hero-content">
-            <div class="col-lg-8 mx-auto text-center">
-                <h6 class="hero-subtitle mb-3 fade-in-up animate-delay-1">WELCOME TO ENCORE EVENTS</h6>
-                <h1 class="hero-title mb-4 fade-in-up animate-delay-2">Smart Event Planning Made Simple</h1>
-                <p class="hero-description mb-5 fade-in-up animate-delay-3">
-                    Get instant, personalized cost estimates for your dream event. Our intelligent estimation tool
-                    analyzes your preferences, guest count, and requirements to provide accurate pricing for
-                    venues, catering, decorations, and more.
+<!-- Hero Section -->
+<section id="home" class="hero-section position-relative overflow-hidden">
+    <div class="container py-5">
+        <div class="row align-items-center min-vh-75 g-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <span class="hero-subtitle mb-3 fade-in-up">
+                    <i class="fas fa-sparkles me-1 text-gold"></i> Premium Event Planning & Estimation
+                </span>
+                <h1 class="hero-title font-display mb-4 fade-in-up animate-delay-1">
+                    Plan Extraordinary Events.<br>
+                    <span class="text-gold-gradient">Know Your Budget.</span>
+                </h1>
+                <p class="hero-description mb-4 fade-in-up animate-delay-2">
+                    Bring your event vision to life with thoughtful planning, flexible choices, and transparent cost estimation. 
+                    From bespoke floral decor and curated dining to comprehensive logistics, tailor every detail to perfection.
                 </p>
-                <div class="hero-cta fade-in-up animate-delay-4">
+                <div class="hero-cta d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start gap-3 fade-in-up animate-delay-3">
                     @auth
-                    <a href="{{ route('public.event-selection') }}" class="btn btn-estimate btn-lg">
-                        Get Your Estimate
-                    </a>
+                        <a href="{{ route('public.event-selection') }}" class="btn btn-gold btn-lg">
+                            <i class="fas fa-calculator me-2"></i> Estimate Your Budget
+                        </a>
                     @else
-                    <a href="{{ route('public.login') }}" class="btn btn-estimate btn-lg">
-                        Get Your Estimate
-                    </a>
+                        <a href="{{ route('public.login') }}" class="btn btn-gold btn-lg">
+                            <i class="fas fa-calculator me-2"></i> Estimate Your Budget
+                        </a>
                     @endauth
+                    <a href="#services" class="btn btn-outline-forest btn-lg">
+                        <i class="fas fa-compass me-2"></i> Explore Our Services
+                    </a>
+                </div>
+
+                <!-- Feature Badges -->
+                <div class="row g-3 mt-4 pt-3 border-top border-light fade-in-up animate-delay-4">
+                    <div class="col-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-gold fs-5"></i>
+                            <span class="small fw-semibold text-muted">Transparent Pricing</span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-layer-group text-gold fs-5"></i>
+                            <span class="small fw-semibold text-muted">Curated Catalog</span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-clock text-gold fs-5"></i>
+                            <span class="small fw-semibold text-muted">Instant Quotes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Imagery Showcase -->
+            <div class="col-lg-5">
+                <div class="hero-card-stack position-relative fade-in-up animate-delay-2">
+                    <div class="hero-main-card surface-card shadow-lg p-2 rounded-4">
+                        <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Encore Events Reception Showcase" class="img-fluid rounded-3 w-100" style="height: 380px; object-fit: cover;">
+                        <div class="p-3 d-flex align-items-center justify-content-between">
+                            <div>
+                                <h6 class="mb-0 fw-bold font-display">Grand Wedding Reception</h6>
+                                <small class="text-muted"><i class="bi bi-geo-alt-fill text-gold me-1"></i>Kerala, India</small>
+                            </div>
+                            <span class="badge badge-gold">Verified Experience</span>
+                        </div>
+                    </div>
+                    <div class="hero-floating-card surface-card shadow-md p-3 rounded-3 d-none d-sm-flex align-items-center gap-3">
+                        <div class="floating-icon rounded-circle bg-forest text-white d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                            <i class="fas fa-chart-line text-gold"></i>
+                        </div>
+                        <div>
+                            <span class="d-block small text-muted">Real-time Budgeting</span>
+                            <strong class="text-forest">Instant Breakdown</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="hero-gallery">
-        <div class="gallery-scroll">
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Elegant Floral Centerpiece" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Wedding Reception Setup" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Barn Wedding Reception" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Dramatic Floral Arrangement" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Elegant Event Decor" />
-            </div>
-
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Elegant Floral Centerpiece" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Wedding Reception Setup" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Barn Wedding Reception" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Dramatic Floral Centerpiece" />
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Elegant Event Decor" />
-            </div>
-        </div>
-    </div>
-
-    <div class="hero-background-overlay"></div>
 </section>
 
-<section id="about" class="about-section py-5">
-    <div class="container">
+<!-- About Section -->
+<section id="about" class="about-section py-5 bg-white border-top border-bottom">
+    <div class="container py-4">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <div class="about-image-wrapper fade-in-left">
-                    <div class="about-image">
-                        <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Elegant Event Setup"
-                            class="img-fluid rounded-image" />
-                    </div>
-                    <div class="decorative-leaves decorative-leaves-left">
-                        <svg width="100" height="120" viewBox="0 0 100 120" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                                fill="rgba(150, 44, 80, 0.2)" />
-                            <path d="M10 60C15 50 25 45 35 50C45 55 50 65 45 75C40 85 30 90 20 85C10 80 5 70 10 60Z"
-                                fill="rgba(150, 44, 80, 0.15)" />
-                        </svg>
-                    </div>
-                    <div class="decorative-leaves decorative-leaves-right">
-                        <svg width="80" height="100" viewBox="0 0 80 100" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M60 20C65 10 75 5 85 10C95 15 100 25 95 35C90 45 80 50 70 45C60 40 55 30 60 20Z"
-                                fill="rgba(150, 44, 80, 0.1)" />
-                            <path
-                                d="M50 50C55 40 65 35 75 40C85 45 90 55 85 65C80 75 70 80 60 75C50 70 45 60 50 50Z"
-                                fill="rgba(150, 44, 80, 0.12)" />
-                        </svg>
+                <div class="about-image-wrapper position-relative">
+                    <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Bespoke Floral Decor" class="img-fluid rounded-4 shadow-md w-100" style="max-height: 440px; object-fit: cover;">
+                    <div class="about-experience-badge position-absolute bottom-0 start-0 m-4 p-3 bg-forest text-white rounded-3 shadow-lg">
+                        <h4 class="font-display text-gold mb-0">100%</h4>
+                        <small class="text-white-75">Transparent & Tailored</small>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="about-content fade-in-right">
-                    <h6 class="about-subtitle">ABOUT US</h6>
-                    <h2 class="about-title mb-4">Revolutionary Event Cost Estimation Platform</h2>
-                    <div class="about-text">
-                        <p class="mb-4">
-                            We've revolutionized event planning with our intelligent estimation system. Our platform
-                            analyzes your specific preferences, guest count, venue requirements, and style choices
-                            to provide accurate, real-time cost estimates for every aspect of your event.
-                        </p>
-                        <p class="mb-4">
-                            From intimate gatherings to grand celebrations, our AI-powered tool considers local
-                            market rates, seasonal variations, and vendor availability to give you the most
-                            precise budget projections. No more guesswork — just smart, data-driven planning.
-                        </p>
-                    </div>
-                    <div class="about-cta">
-                        <a href="#services" class="btn btn-read-more">
-                            Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="services" class="budget-section">
-    <div class="budget-container">
-        <div class="budget-content fade-in-left">
-            <h2 class="budget-title">Need To Know Your Budget</h2>
-            <h3 class="budget-subtitle">here is the solution</h3>
-            <p class="budget-description">
-                Get instant, accurate cost estimates for your dream event. Our intelligent estimation tool
-                analyzes your preferences, guest count, and requirements to provide detailed pricing for
-                venues, catering, decorations, and all event services.
-            </p>
-            <div class="budget-cta">
-                @auth
-                <a href="{{ route('public.event-selection') }}" class="btn btn-estimate-now">
-                    Estimate Now
-                </a>
-                @else
-                <a href="{{ route('public.login') }}" class="btn btn-estimate-now">
-                    Estimate Now
-                </a>
-                @endauth
-            </div>
-        </div>
-        <div class="budget-image fade-in-right">
-            <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Elegant Floral Arrangements" />
-        </div>
-    </div>
-</section>
-
-<section id="team" class="team-section">
-    <div class="container">
-        <div class="team-header text-center">
-            <h2 class="team-title">Meet Our Team</h2>
-            <p class="team-description">
-                Our dedicated team of experienced event professionals is at the heart of what we do. With a deep
-                knowledge of the local market and a passion for helping clients achieve their event goals.
-            </p>
-            <div class="team-navigation">
-                <button class="team-nav-button team-nav-left" onclick="scrollTeamLeft()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <button class="team-nav-button team-nav-right" onclick="scrollTeamRight()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <div class="team-carousel">
-            <div class="team-members" id="teamMembers">
-                @php
-                $bgClasses = ['team-bg-orange', 'team-bg-pink', 'team-bg-blue'];
-                $bgIndex = 0;
-                @endphp
-
-                @forelse($teamMembers as $member)
-                <div class="team-member-wrapper">
-                    <div class="team-member {{ $bgClasses[$bgIndex % count($bgClasses)] }}">
-                        <div class="member-image-container">
-                            @if($member->photo)
-                            <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" class="member-image">
-                            @else
-                            <img src="{{ asset('website/assets/team.png') }}" alt="{{ $member->name }}" class="member-image">
-                            @endif
+                <span class="section-kicker">About Encore Events</span>
+                <h2 class="section-title font-display mb-4">Precision Planning for Unforgettable Moments</h2>
+                <p class="text-secondary mb-3">
+                    At Encore Events, we believe high-end celebrations shouldn’t be clouded by budget uncertainty. 
+                    Our smart platform pairs your unique event preferences—from floral centerpieces and stage backdrops to catering menus and seating layouts—with transparent pricing.
+                </p>
+                <p class="text-secondary mb-4">
+                    Whether you are orchestrating an intimate engagement, a vibrant Sangeet, or a grand corporate gala, our experienced team ensures your vision is delivered with unmatched artistry and budget control.
+                </p>
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="feature-icon-box bg-gold-subtle rounded-circle p-2 text-gold">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Tailored Options</h6>
+                                <p class="small text-muted mb-0">Select individual decor, catering, and service items.</p>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="member-name">{{ $member->name }}</h4>
-                    <p class="member-title">{{ $member->designation }}</p>
-                </div>
-                @php $bgIndex++; @endphp
-                @empty
-
-                <div class="team-member-wrapper">
-                    <div class="team-member team-bg-orange">
-                        <div class="member-image-container">
-                            <img src="{{ asset('website/assets/team.png') }}" alt="John Smith" class="member-image">
-                        </div>
-                    </div>
-                    <h4 class="member-name">John Smith</h4>
-                    <p class="member-title">Company CEO</p>
-                </div>
-
-                <div class="team-member-wrapper">
-                    <div class="team-member team-bg-pink">
-                        <div class="member-image-container">
-                            <img src="{{ asset('website/assets/team.png') }}" alt="David Johnson" class="member-image">
-                        </div>
-                    </div>
-                    <h4 class="member-name">David Johnson</h4>
-                    <p class="member-title">Co-Founder</p>
-                </div>
-
-                <div class="team-member-wrapper">
-                    <div class="team-member team-bg-blue">
-                        <div class="member-image-container">
-                            <img src="{{ asset('website/assets/team.png') }}" alt="Mary Johnson" class="member-image">
-                        </div>
-                    </div>
-                    <h4 class="member-name">Mary Johnson</h4>
-                    <p class="member-title">Property Manager</p>
-                </div>
-                @endforelse
-            </div>
-        </div>
-
-        <div class="team-decorative team-decorative-top">
-            <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                    fill="rgba(139, 69, 19, 0.2)" />
-                <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                    fill="rgba(139, 69, 19, 0.15)" />
-                <path d="M45 50C50 40 60 35 70 40C80 45 85 55 80 65C75 75 65 80 55 75C45 70 40 60 45 50Z"
-                    fill="rgba(139, 69, 19, 0.12)" />
-            </svg>
-        </div>
-
-        <div class="team-decorative team-decorative-bottom">
-            <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                    fill="rgba(139, 69, 19, 0.2)" />
-                <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                    fill="rgba(139, 69, 19, 0.15)" />
-                <path d="M45 50C50 40 60 35 70 40C80 45 85 55 80 65C75 75 65 80 55 75C45 70 40 60 45 50Z"
-                    fill="rgba(139, 69, 19, 0.12)" />
-            </svg>
-        </div>
-    </div>
-</section>
-
-<section class="trends-section py-5">
-    <div class="container p-0">
-        <div class="trends-header px-md-0 px-3">
-            <div class="trends-title-wrapper fade-in-up">
-                <h2 class="trends-title">Popular Event Categories & Pricing Trends</h2>
-                <div class="decorative-leaves trends-leaves">
-                    <svg width="120" height="80" viewBox="0 0 120 80" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                            fill="rgba(150, 44, 80, 0.15)" />
-                        <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                            fill="rgba(150, 44, 80, 0.12)" />
-                        <path d="M45 50C50 40 60 35 70 40C80 45 85 55 80 65C75 75 65 80 55 75C45 70 40 60 45 50Z"
-                            fill="rgba(150, 44, 80, 0.1)" />
-                    </svg>
-                </div>
-            </div>
-            <div class="trends-navigation">
-                <button class="nav-button nav-button-left" onclick="scrollTrendsLeft()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <button class="nav-button nav-button-right" onclick="scrollTrendsRight()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Elegant Dining Setup" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Dessert Display" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Signature Drinks" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Floral Arrangements" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Wedding Decor" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Corporate Events"
-                            class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Birthday Parties" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="trends-item">
-                    <div class="trends-image">
-                        <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Anniversary Celebrations"
-                            class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="testimonial" class="testimonials-section">
-    <div class="container p-0">
-        <div class="testimonials-header px-md-0 px-3">
-            <div class="testimonials-title-wrapper fade-in-up">
-                <h6 class="testimonials-subtitle">TESTIMONIALS</h6>
-                <h2 class="testimonials-title">What Our Client says</h2>
-            </div>
-            <div class="testimonials-navigation">
-                <button class="testimonial-nav-button testimonial-nav-left" onclick="scrollTestimonialsLeft()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <button class="testimonial-nav-button testimonial-nav-right" onclick="scrollTestimonialsRight()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div class="testimonials-decorative">
-            <svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 50C40 30 60 20 80 35C100 50 110 70 95 90C80 110 60 120 40 105C20 90 15 70 30 50Z"
-                    fill="rgba(139, 69, 19, 0.3)" />
-                <path
-                    d="M120 30C130 10 150 0 170 15C190 30 200 50 185 70C170 90 150 100 130 85C110 70 105 50 120 30Z"
-                    fill="rgba(139, 69, 19, 0.25)" />
-                <path
-                    d="M80 100C90 80 110 70 130 85C150 100 160 120 145 140C130 160 110 170 90 155C70 140 65 120 80 100Z"
-                    fill="rgba(139, 69, 19, 0.2)" />
-            </svg>
-        </div>
-        <div class="testimonials-row">
-            <div class="testimonial-card">
-                <div class="testimonial-profile">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjRmNGY0Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik0yNSA2NSBRMjUgNTAgNTAgNTAgUTc1IDUwIDc1IDY1IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPg=="
-                        alt="Priya Sharma" class="profile-image" />
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-marks">
-                        <span class="quote-open">"</span>
-                        <span class="quote-close">"</span>
-                    </div>
-                    <p class="testimonial-text">The estimation tool gave us such accurate pricing that we could
-                        plan our dream wedding and Sangeet within budget! The breakdown was so detailed - from mandap decor
-                        to catering arrangements - we knew exactly what to expect. No surprises, just perfect planning!
-                    </p>
-                    <div class="testimonial-separator"></div>
-                    <h4 class="testimonial-name">Priya Sharma</h4>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-profile">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjRmNGY0Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik0yNSA2NSBRMjUgNTAgNTAgNTAgUTc1IDUwIDc1IDY1IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPg=="
-                        alt="Rajesh Iyer" class="profile-image" />
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-marks">
-                        <span class="quote-open">"</span>
-                        <span class="quote-close">"</span>
-                    </div>
-                    <p class="testimonial-text">The cost estimation feature was a game-changer for our corporate
-                        gala event! We got instant quotes for stage setups and audio-visual options, comparing
-                        packages side-by-side. The accuracy helped our committee make informed decisions quickly.</p>
-                    <div class="testimonial-separator"></div>
-                    <h4 class="testimonial-name">Rajesh Iyer</h4>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-profile">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjRmNGY0Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik0yNSA2NSBRMjUgNTAgNTAgNTAgUTc1IDUwIDc1IDY1IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPg=="
-                        alt="Sneha Kapoor" class="profile-image" />
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-marks">
-                        <span class="quote-open">"</span>
-                        <span class="quote-close">"</span>
-                    </div>
-                    <p class="testimonial-text">I loved how the estimation tool let me adjust guest counts and
-                        decoration preferences in real-time to see how it affected the total cost. Planning my daughter's
-                        Haldi & Mehendi ceremony became so much easier when I could see exact figures!</p>
-                    <div class="testimonial-separator"></div>
-                    <h4 class="testimonial-name">Sneha Kapoor</h4>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-profile">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjRmNGY0Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik0yNSA2NSBRMjUgNTAgNTAgNTAgUTc1IDUwIDc1IDY1IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPg=="
-                        alt="Vikram Joshi" class="profile-image" />
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-marks">
-                        <span class="quote-open">"</span>
-                        <span class="quote-close">"</span>
-                    </div>
-                    <p class="testimonial-text">The detailed cost breakdown helped us plan the perfect 25th anniversary
-                        celebration for my parents. We could see exactly what we were paying for each service and seating setup,
-                        and the estimates were spot-on. Transparent pricing and seamless execution!</p>
-                    <div class="testimonial-separator"></div>
-                    <h4 class="testimonial-name">Vikram Joshi</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="gallery" class="gallery-section">
-    <div class="container">
-        <div class="gallery-header text-center">
-            <h6 class="gallery-subtitle">GALLERY</h6>
-            <h2 class="gallery-title">Go Through Our Memory Lane</h2>
-        </div>
-        <div class="gallery-decorative">
-            <div class="decorative-leaves gallery-leaves-top">
-                <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                        fill="rgba(139, 69, 19, 0.3)" />
-                    <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                        fill="rgba(139, 69, 19, 0.25)" />
-                    <path
-                        d="M100 40C105 30 115 25 125 30C135 35 140 45 135 55C130 65 120 70 110 65C100 60 95 50 100 40Z"
-                        fill="rgba(139, 69, 19, 0.2)" />
-                </svg>
-            </div>
-            <div class="decorative-leaves gallery-leaves-bottom">
-                <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                        fill="rgba(139, 69, 19, 0.3)" />
-                    <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                        fill="rgba(139, 69, 19, 0.25)" />
-                    <path
-                        d="M100 40C105 30 115 25 125 30C135 35 140 45 135 55C130 65 120 70 110 65C100 60 95 50 100 40Z"
-                        fill="rgba(139, 69, 19, 0.2)" />
-                </svg>
-            </div>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Wedding Reception Table" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Grand Event Hall" />
-            </div>
-            <div class="gallery-item gallery-item-medium">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Luxurious Dining Room" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Wedding Cake Display" />
-            </div>
-            <div class="gallery-item gallery-item-wide">
-                <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Fresh Smoothies & Fruits" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Waiter with Drinks" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Wedding Arch with Flowers" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Dessert Table" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Floral Bouquet" />
-            </div>
-            <div class="gallery-item gallery-item-wide">
-                <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Moody Event Space" />
-            </div>
-            <div class="gallery-item gallery-item-wide">
-                <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Table with Floral Decor" />
-            </div>
-            <div class="gallery-item gallery-item-tall">
-                <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Modern Wedding Setup" />
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image-reference-section p-0">
-    <div class="image-reference-container">
-        <div class="image-reference-background">
-            <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Elegant Restaurant Interior"
-                class="reference-bg-image" />
-            <div class="reference-overlay"></div>
-        </div>
-        <div class="image-reference-content">
-            <div class="container">
-                <div class="row align-items-center min-vh-100">
-                    <div class="col-lg-6">
-                        <div class="reference-text-content fade-in-left">
-                            <h2 class="reference-title">Need To Know Your Budget</h2>
-                            <h3 class="reference-subtitle">here is the solution</h3>
-                            <p class="reference-description">
-                                Get instant, accurate cost estimates for your dream event. Our intelligent
-                                estimation tool
-                                analyzes your preferences, guest count, and requirements to provide detailed pricing
-                                for
-                                venues, catering, decorations, and all event services.
-                            </p>
-                            <div class="reference-cta">
-                                @auth
-                                <a href="{{ route('public.event-selection') }}" class="btn btn-estimate-now">
-                                    Estimate Now
-                                </a>
-                                @else
-                                <a href="{{ route('public.login') }}" class="btn btn-estimate-now">
-                                    Estimate Now
-                                </a>
-                                @endauth
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="feature-icon-box bg-forest-subtle rounded-circle p-2 text-forest">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Immediate Estimates</h6>
+                                <p class="small text-muted mb-0">Calculate accurate costs based on your guest count.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <a href="{{ route('public.about') }}" class="btn btn-outline-forest">
+                    Learn More About Us <i class="fas fa-arrow-right ms-2"></i>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Services / Offerings Section -->
+<section id="services" class="services-section py-5 bg-sand">
+    <div class="container py-4">
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="section-kicker">Our Core Services</span>
+            <h2 class="section-title font-display mb-3">Everything Needed For A Flawless Event</h2>
+            <p class="text-secondary">Explore our curated collections crafted to elevate every aspect of your celebration.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Decoration -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 card-hoverable surface-card border-0 shadow-sm p-3">
+                    <div class="service-card-image mb-3 overflow-hidden rounded-3 position-relative" style="height: 180px;">
+                        <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Floral & Stage Decorations" class="w-100 h-100 object-fit-cover transition-transform">
+                        <span class="badge badge-forest position-absolute top-0 start-0 m-2">Decor</span>
+                    </div>
+                    <h5 class="font-display mb-2">Stage & Floral Decor</h5>
+                    <p class="small text-secondary mb-3">Entrance arches, custom mandaps, bespoke centerpieces, and atmospheric mood lighting.</p>
+                    <div class="mt-auto pt-2 border-top">
+                        @auth
+                            <a href="{{ route('public.event-selection') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                View Items <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('public.login') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                View Items <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gourmet Food & Catering -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 card-hoverable surface-card border-0 shadow-sm p-3">
+                    <div class="service-card-image mb-3 overflow-hidden rounded-3 position-relative" style="height: 180px;">
+                        <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Catering & Dining" class="w-100 h-100 object-fit-cover transition-transform">
+                        <span class="badge badge-forest position-absolute top-0 start-0 m-2">Catering</span>
+                    </div>
+                    <h5 class="font-display mb-2">Gourmet Catering</h5>
+                    <p class="small text-secondary mb-3">Artfully crafted appetizers, regional authentic delicacies, desserts, and beverage setups.</p>
+                    <div class="mt-auto pt-2 border-top">
+                        @auth
+                            <a href="{{ route('public.event-selection') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                Explore Menus <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('public.login') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                Explore Menus <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seating Arrangements -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 card-hoverable surface-card border-0 shadow-sm p-3">
+                    <div class="service-card-image mb-3 overflow-hidden rounded-3 position-relative" style="height: 180px;">
+                        <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Seating Arrangements" class="w-100 h-100 object-fit-cover transition-transform">
+                        <span class="badge badge-forest position-absolute top-0 start-0 m-2">Seating</span>
+                    </div>
+                    <h5 class="font-display mb-2">Seating & Layouts</h5>
+                    <p class="small text-secondary mb-3">Banquet setups, round tables, lounge seating, and VIP hospitality arrangements.</p>
+                    <div class="mt-auto pt-2 border-top">
+                        @auth
+                            <a href="{{ route('public.event-selection') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                Check Layouts <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('public.login') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                Check Layouts <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Services -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 card-hoverable surface-card border-0 shadow-sm p-3">
+                    <div class="service-card-image mb-3 overflow-hidden rounded-3 position-relative" style="height: 180px;">
+                        <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Services and Staff" class="w-100 h-100 object-fit-cover transition-transform">
+                        <span class="badge badge-forest position-absolute top-0 start-0 m-2">Services</span>
+                    </div>
+                    <h5 class="font-display mb-2">Coordination & Sound</h5>
+                    <p class="small text-secondary mb-3">Live acoustic sound systems, photography, videography, and dedicated catering staff.</p>
+                    <div class="mt-auto pt-2 border-top">
+                        @auth
+                            <a href="{{ route('public.event-selection') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                Learn More <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('public.login') }}" class="small fw-bold text-gold d-inline-flex align-items-center">
+                                Learn More <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Budget Callout Banner -->
+<section class="budget-cta-banner py-5 bg-forest text-white">
+    <div class="container py-4">
+        <div class="row align-items-center justify-content-between g-4">
+            <div class="col-lg-8 text-center text-lg-start">
+                <span class="badge badge-gold mb-2">Smart Budgeting</span>
+                <h2 class="font-display text-white mb-2">Need To Know Your Event Budget Right Now?</h2>
+                <p class="text-white-75 mb-0">Select your preferences, guest count, and required items to receive an accurate, instant breakdown with no surprises.</p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                @auth
+                    <a href="{{ route('public.event-selection') }}" class="btn btn-gold btn-lg">
+                        <i class="fas fa-calculator me-2"></i> Estimate Now
+                    </a>
+                @else
+                    <a href="{{ route('public.login') }}" class="btn btn-gold btn-lg">
+                        <i class="fas fa-calculator me-2"></i> Estimate Now
+                    </a>
+                @endauth
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section (Database-backed) -->
+<section id="team" class="team-section py-5 bg-white">
+    <div class="container py-4">
+        <div class="d-flex flex-wrap align-items-end justify-content-between mb-5">
+            <div>
+                <span class="section-kicker">Event Specialists</span>
+                <h2 class="section-title font-display mb-2">Meet Our Experienced Team</h2>
+                <p class="text-secondary mb-0">The dedicated professionals crafting your seamless celebrations.</p>
+            </div>
+            <div class="team-nav-controls d-flex gap-2 mt-3 mt-sm-0">
+                <button class="btn btn-sm btn-outline-secondary rounded-circle p-2" onclick="scrollTeamLeft()" aria-label="Previous Team Member">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary rounded-circle p-2" onclick="scrollTeamRight()" aria-label="Next Team Member">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="team-carousel-wrapper">
+            <div class="team-members-row d-flex gap-4 overflow-x-auto pb-3" id="teamMembers" style="scroll-behavior: smooth;">
+                @forelse($teamMembers as $member)
+                    <div class="team-card-item flex-shrink-0" style="width: 260px;">
+                        <div class="card surface-card border-0 shadow-sm h-100 text-center p-3">
+                            <div class="team-avatar-container mx-auto mb-3 rounded-circle overflow-hidden bg-sand border" style="width: 140px; height: 140px;">
+                                @if($member->photo)
+                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" class="w-100 h-100 object-fit-cover">
+                                @else
+                                    <img src="{{ asset('website/assets/team.png') }}" alt="{{ $member->name }}" class="w-100 h-100 object-fit-cover">
+                                @endif
+                            </div>
+                            <h5 class="font-display mb-1 fs-6">{{ $member->name }}</h5>
+                            <span class="badge badge-forest small">{{ $member->designation ?? 'Event Specialist' }}</span>
+                        </div>
+                    </div>
+                @empty
+                    <div class="team-card-item flex-shrink-0" style="width: 260px;">
+                        <div class="card surface-card border-0 shadow-sm h-100 text-center p-3">
+                            <div class="team-avatar-container mx-auto mb-3 rounded-circle overflow-hidden bg-sand border" style="width: 140px; height: 140px;">
+                                <img src="{{ asset('website/assets/team.png') }}" alt="Event Coordinator" class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <h5 class="font-display mb-1 fs-6">Lead Coordinator</h5>
+                            <span class="badge badge-forest small">Operations Head</span>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonial" class="testimonials-section py-5 bg-sand">
+    <div class="container py-4">
+        <div class="d-flex flex-wrap align-items-end justify-content-between mb-5">
+            <div>
+                <span class="section-kicker">Client Stories</span>
+                <h2 class="section-title font-display mb-2">Trusted By Families & Organizations</h2>
+                <p class="text-secondary mb-0">Read how our transparent cost estimation made planning stress-free.</p>
+            </div>
+            <div class="testimonial-nav-controls d-flex gap-2 mt-3 mt-sm-0">
+                <button class="btn btn-sm btn-outline-secondary rounded-circle p-2" onclick="scrollTestimonialsLeft()" aria-label="Previous Testimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary rounded-circle p-2" onclick="scrollTestimonialsRight()" aria-label="Next Testimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-4 testimonials-row-scroll flex-nowrap overflow-x-auto pb-3" style="scroll-behavior: smooth;">
+            <div class="col-lg-4 col-md-6 flex-shrink-0">
+                <div class="card surface-card h-100 border-0 shadow-sm p-4">
+                    <div class="d-flex align-items-center gap-1 text-gold mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-secondary fst-italic mb-4">
+                        "The estimation tool gave us such accurate pricing that we could plan our wedding and Sangeet within budget. The breakdown—from mandap floral decor to catering—left zero surprises."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="avatar rounded-circle bg-forest text-gold fw-bold d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">PS</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Priya Sharma</h6>
+                            <small class="text-muted">Wedding Client</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 flex-shrink-0">
+                <div class="card surface-card h-100 border-0 shadow-sm p-4">
+                    <div class="d-flex align-items-center gap-1 text-gold mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-secondary fst-italic mb-4">
+                        "A game-changer for our annual corporate gala! We received instant quotes for stage setups and audio-visual options, helping our committee finalize decisions quickly."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="avatar rounded-circle bg-forest text-gold fw-bold d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">RI</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Rajesh Iyer</h6>
+                            <small class="text-muted">Corporate Event Planner</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 flex-shrink-0">
+                <div class="card surface-card h-100 border-0 shadow-sm p-4">
+                    <div class="d-flex align-items-center gap-1 text-gold mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-secondary fst-italic mb-4">
+                        "Adjusting guest counts and seating preferences in real time gave us immediate visibility into overall expenses. Seamless execution on our daughter’s Haldi ceremony!"
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="avatar rounded-circle bg-forest text-gold fw-bold d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">SK</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Sneha Kapoor</h6>
+                            <small class="text-muted">Family Celebration</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="gallery-section py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="section-kicker">Visual Memories</span>
+            <h2 class="section-title font-display mb-3">Moments From Our Signature Events</h2>
+            <p class="text-secondary">A glimpse into the atmospheres, stages, and celebrations we have had the privilege to curate.</p>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4 col-sm-6">
+                <div class="gallery-item-card rounded-3 overflow-hidden shadow-sm position-relative" style="height: 260px;">
+                    <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Wedding Reception Table Setup" class="w-100 h-100 object-fit-cover transition-zoom">
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="gallery-item-card rounded-3 overflow-hidden shadow-sm position-relative" style="height: 260px;">
+                    <img src="{{ asset('website/assets/dramatic-floral-arrangement.jpg') }}" alt="Floral Stage Backdrop" class="w-100 h-100 object-fit-cover transition-zoom">
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="gallery-item-card rounded-3 overflow-hidden shadow-sm position-relative" style="height: 260px;">
+                    <img src="{{ asset('website/assets/elegant-floral-centerpiece.jpg') }}" alt="Luxury Banquet Dining" class="w-100 h-100 object-fit-cover transition-zoom">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="gallery-item-card rounded-3 overflow-hidden shadow-sm position-relative" style="height: 260px;">
+                    <img src="{{ asset('website/assets/barn-wedding-reception.jpg') }}" alt="Outdoor Reception Ambience" class="w-100 h-100 object-fit-cover transition-zoom">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="gallery-item-card rounded-3 overflow-hidden shadow-sm position-relative" style="height: 260px;">
+                    <img src="{{ asset('website/assets/wedding-reception-setup.jpg') }}" alt="Grand Evening Illumination" class="w-100 h-100 object-fit-cover transition-zoom">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@endsection
+
 @push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-        initializeTeamNavigation();
-    });
+    function scrollTeamLeft() {
+        const row = document.getElementById('teamMembers');
+        if (row) row.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+    function scrollTeamRight() {
+        const row = document.getElementById('teamMembers');
+        if (row) row.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+    function scrollTestimonialsLeft() {
+        const row = document.querySelector('.testimonials-row-scroll');
+        if (row) row.scrollBy({ left: -350, behavior: 'smooth' });
+    }
+    function scrollTestimonialsRight() {
+        const row = document.querySelector('.testimonials-row-scroll');
+        if (row) row.scrollBy({ left: 350, behavior: 'smooth' });
+    }
 </script>
 @endpush
-@endsection

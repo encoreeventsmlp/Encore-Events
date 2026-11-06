@@ -411,26 +411,48 @@ function initializeTeamNavigation() {
  * Navigation functionality
  */
 function initializeNavigation() {
-  // Smooth scrolling for navigation links
-  $('.navbar-nav a[href^="#"]').on('click', function (e) {
-    e.preventDefault();
+  // Mobile drawer toggle
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileNavSlide = document.getElementById('mobileNavSlide');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  const mobileNavClose = document.getElementById('mobileNavClose');
 
-    const target = $(this.getAttribute('href'));
+  function openMobileNav() {
+    if (mobileNavSlide) mobileNavSlide.classList.add('active');
+    if (mobileNavOverlay) mobileNavOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    if (mobileNavSlide) mobileNavSlide.classList.remove('active');
+    if (mobileNavOverlay) mobileNavOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', openMobileNav);
+  }
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', closeMobileNav);
+  }
+  if (mobileNavOverlay) {
+    mobileNavOverlay.addEventListener('click', closeMobileNav);
+  }
+
+  // Smooth scrolling for navigation links
+  $('a[href^="#"]').on('click', function (e) {
+    const href = $(this).attr('href');
+    if (href === '#' || href === '#!') return;
+    const target = $(href);
     if (target.length) {
+      e.preventDefault();
+      closeMobileNav();
       $('html, body').animate(
         {
-          scrollTop: target.offset().top - 70 // Account for navbar height
+          scrollTop: target.offset().top - 80 // Account for navbar height
         },
-        800,
-        'easeInOutQuad'
+        500
       );
-
-      // Update active nav item
-      $('.navbar-nav .nav-link').removeClass('active');
-      $(this).addClass('active');
-
-      // Close mobile menu if open
-      $('.navbar-collapse').collapse('hide');
     }
   });
 

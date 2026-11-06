@@ -2,6 +2,10 @@
 
 @section('title', 'Edit Profile - Encore Events')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('website/css/edit-profile.css') }}">
+@endsection
+
 @section('content')
 
 <main class="edit-profile-main">
@@ -10,33 +14,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h6 class="edit-profile-subtitle mb-3" style="font-size: 1rem; font-weight: 600; letter-spacing: 3px; color: rgba(255, 255, 255, 0.9); text-transform: uppercase;">EDIT PROFILE</h6>
-                    <h1 class="page-title">Update Your Profile</h1>
-                    <p class="page-subtitle">Keep your information up to date</p>
+                    <span class="section-kicker">Account Settings</span>
+                    <h1 class="page-title font-display">Update Your Profile</h1>
+                    <p class="text-secondary max-w-700 mx-auto">Keep your contact details and event preferences accurate.</p>
                 </div>
             </div>
-        </div>
-
-        <div class="edit-profile-decorative edit-profile-decorative-top">
-            <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                    fill="rgba(255, 255, 255, 0.2)" />
-                <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                    fill="rgba(255, 255, 255, 0.15)" />
-                <path d="M45 50C50 40 60 35 70 40C80 45 85 55 80 65C75 75 65 80 55 75C45 70 40 60 45 50Z"
-                    fill="rgba(255, 255, 255, 0.12)" />
-            </svg>
-        </div>
-
-        <div class="edit-profile-decorative edit-profile-decorative-bottom">
-            <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 30C25 20 35 15 45 20C55 25 60 35 55 45C50 55 40 60 30 55C20 50 15 40 20 30Z"
-                    fill="rgba(255, 255, 255, 0.2)" />
-                <path d="M70 20C75 10 85 5 95 10C105 15 110 25 105 35C100 45 90 50 80 45C70 40 65 30 70 20Z"
-                    fill="rgba(255, 255, 255, 0.15)" />
-                <path d="M45 50C50 40 60 35 70 40C80 45 85 55 80 65C75 75 65 80 55 75C45 70 40 60 45 50Z"
-                    fill="rgba(255, 255, 255, 0.12)" />
-            </svg>
         </div>
     </header>
 

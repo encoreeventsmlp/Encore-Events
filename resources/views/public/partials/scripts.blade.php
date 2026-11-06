@@ -8,4 +8,12 @@
 
 <script src="{{ asset('website/js/main.js') }}"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    });
+</script>
+
 @yield('scripts')
